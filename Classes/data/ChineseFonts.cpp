@@ -1,5 +1,11 @@
 #include "ChineseFonts.h"
 
+/***********************************************
+
+这是一个中文字体转换为UTF8编码函数，可以使Cocos显示中文字体
+
+***********************************************/
+
 char *FontToUTF8(const char* font)
 {
 	int len = MultiByteToWideChar(CP_ACP, 0, font, -1, NULL, 0);

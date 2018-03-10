@@ -1,3 +1,11 @@
+/***********************************************
+
+主要存取SP、关卡信息、皮肤ID、英雄类型，
+是后台数据管理的场所，游戏前端数据和外部数据的连接的桥梁
+
+***********************************************/
+
+
 #include "dataM.h"
 
 static DataM* s_dataM = nullptr;
@@ -19,7 +27,7 @@ bool DataM::init()
 	externData = ExternData::getInstance();
 	return true;
 }
-
+//更新最大关卡
 bool DataM::updateMaxLevelCanPlayed()
 {
 	if (maxLevelCanPlayed == _id)
@@ -30,7 +38,7 @@ bool DataM::updateMaxLevelCanPlayed()
 	}
 	return false;
 }
-
+//更新最大分数
 void DataM::updateLevelMaxScoreArray(int currentLevelScore)
 {
 	if (currentLevelScore > levelMaxScoreArray[_id])
@@ -40,7 +48,7 @@ void DataM::updateLevelMaxScoreArray(int currentLevelScore)
 		externData->writeLevelMaxScoreArray();
 	}
 }
-
+//更新SP
 void DataM::updateSP(int dSP)
 {
 	currentATKSP += dSP;
@@ -73,7 +81,7 @@ int DataM::addSkill(int row, int col)
 	externData->writeSP();		//更新当前三者SP
 	return spDecrement;
 }
-
+//ATK类型坦克加点
 int DataM::ATKAddSkill(int row, int col)
 {
 	if (ATKSPMax[row][col] > ATKSP[row][col])
@@ -89,7 +97,7 @@ int DataM::ATKAddSkill(int row, int col)
 		return 0;
 	}
 }
-
+//DEF类型坦克加点
 int DataM::DEFAddSkill(int row, int col)
 {
 	if (DEFSPMax[row][col] > DEFSP[row][col])
@@ -105,7 +113,7 @@ int DataM::DEFAddSkill(int row, int col)
 		return 0;
 	}
 }
-
+//SPE类型坦克加点
 int DataM::SPEAddSkill(int row, int col)
 {
 
@@ -149,7 +157,7 @@ void DataM::getAllSPMatrix(int(*&SP)[5], int(*&SPMax)[5], int(*&SPNeed)[5], int(
 		break;
 	}
 }
-
+//得到各个类型坦克的id
 int DataM::getSkinId()
 {
 	switch (hType)

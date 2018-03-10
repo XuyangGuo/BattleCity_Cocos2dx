@@ -1,5 +1,7 @@
 #pragma once
-
+/*****************************************
+这个类是坦克管理类，主要的功能就是提供创建坦克的接口，并有暂停游戏和移除坦克的函数
+*****************************************/
 #include "cocos2d.h"
 #include "data\Global.h"
 #include "PlayerTank.h"
@@ -22,12 +24,13 @@ public:
 	CREATE_FUNC(TankM);
 	bool init();
 	/* 获取玩家坦克 */
-	PlayerTank* getPlayerTank() { return _playerTank; }
+	PlayerTank* getPlayerTank() { return _playerTank;}
 	/* 获取敌人坦克 */
 	Vector<EnemyTank*>& getEnemyTanks() { return _enemyTanks; }
 	/* 获取所有坦克 */
 	Vector<Tank*>& getAllTanks() { return _tanks; }
 	
+	/*创建道具*/
 	Bonus* bonus;
 	void removeBonus();
 	/* 删除坦克 */

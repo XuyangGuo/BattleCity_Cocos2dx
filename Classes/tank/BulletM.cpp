@@ -1,7 +1,9 @@
 #include "BulletM.h"
 
+/*该类为子弹管理类，主要的函数是提供一个创建子弹的接口，并统计子弹的数目*/
 BulletM::BulletM()
 {
+
 }
 
 BulletM::~BulletM()
@@ -18,7 +20,7 @@ bool BulletM::init()
 	} while (false);
 	return bRet;
 }
-
+//得到子弹数目
 int BulletM::getBulletNum(void* owner)
 {
 	auto num = 0;
@@ -33,13 +35,13 @@ int BulletM::getBulletNum(void* owner)
 	}
 	return num;
 }
-
+//创建子弹的接口
 void BulletM::createBullet(void* owner, float speed, int power, Vec2 pos, Direction direction,int distance)
 {
 	auto bullet = Bullet::create(owner, speed, power, pos, direction,distance);
 	this->addChild(bullet);
 }
-
+//暂停游戏的接口
 void BulletM::pauseGame()
 {
 	auto &bullets = this->getChildren();
@@ -49,7 +51,7 @@ void BulletM::pauseGame()
 		bullet->pause();
 	}
 }
-
+//重新开始游戏的接口
 void BulletM::resumeGame()
 {
 	auto &bullets = this->getChildren();

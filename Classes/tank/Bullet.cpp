@@ -6,6 +6,9 @@
 
 #include "SimpleAudioEngine.h"
 using namespace CocosDenshion;
+/*该类为子弹类，主要的函数有创建子弹的函数，还有子弹移动过程中的碰撞检测，
+有与地图边界、地图障碍物、子弹、坦克这四种判断检测*/
+
 //加音效,方便复制，故而注释在此
 //SimpleAudioEngine::getInstance()->playBackgroundMusic("menu_levelScene.mp3", true);
 
@@ -15,7 +18,7 @@ Bullet::Bullet(){}
 Bullet::~Bullet()
 {
 }
-
+//创建子弹
 Bullet* Bullet::create(void* owner, float speed, int power, Vec2 pos, Direction direction, int distance)
 {
 
@@ -32,7 +35,7 @@ Bullet* Bullet::create(void* owner, float speed, int power, Vec2 pos, Direction 
 		return NULL;
 	}
 }
-
+//根据坦克类型进行创建，不同的坦克子弹类型不同，并得到坦克的速度、位置、方向、射程等参数
 bool Bullet::init(void* owner, float speed, int power, Vec2 pos, Direction direction, int distance)
 {
 	bool bRet = false;
@@ -74,16 +77,16 @@ bool Bullet::init(void* owner, float speed, int power, Vec2 pos, Direction direc
 
 		this->addChild(bulletImage);
 
-		_owner = owner;
-		_power = power;
-		_speed = speed;
-		_distance = distance;
-		_direction = direction;
+		_owner = owner;//子弹归属的坦克
+		_power = power;//子弹的力量
+		_speed = speed;//子弹的速度
+		_distance = distance;//子弹的射程
+		_direction = direction;//子弹的方向
 		atk = static_cast<Tank*>(owner)->getATK();  //该子弹的攻击力
-		this->setPosition(pos);
-		this->setRotation((direction - 1) * 90);
-		_newPos = pos;
-		this->move();
+		this->setPosition(pos);//设置位置
+		this->setRotation((direction - 1) * 90);//设置方向
+		_newPos = pos;//位置
+		this->move();//开始移动
 
 		Bullet_p_x = this->getPositionX();
 		Bullet_p_y = this->getPositionY();
@@ -94,7 +97,7 @@ bool Bullet::init(void* owner, float speed, int power, Vec2 pos, Direction direc
 	} while (false);
 	return bRet;
 }
-
+//对子弹进行判断碰撞检测，超出射程则设置不可见，并爆炸
 void Bullet::update(float dt)
 {
 	_dt = dt;
@@ -123,44 +126,42 @@ void Bullet::update(float dt)
 		this->removeFromParent();
 	}
 }
-
+//子弹的移动函数
 void Bullet::move()
 {
-	if (_direction == UP)
+	if (_direction == UP)//方向向上
 	{
-		/* 按照时间来移动会导致帧数低的时候会穿墙，逻辑复杂所以没处理穿墙，改用按帧移动 */
-		//_newPos.y = _position.y + _speed * 60 * _dt;
 		_newPos.y = _position.y + _speed;
 	}
-	else if (_direction == DOWN)
+	else if (_direction == DOWN)//方向向下
 	{
 		//_newPos.y = _position.y - _speed * 60 * _dt;
 		_newPos.y = _position.y - _speed;
 	}
-	else if (_direction == LEFT)
+	else if (_direction == LEFT)//方向向左
 	{
 		//_newPos.x = _position.x - _speed * 60 * _dt;
 		_newPos.x = _position.x - _speed;
 	}
-	else if (_direction == RIGHT)
+	else if (_direction == RIGHT)//方向向右
 	{
 		//_newPos.x = _position.x + _speed * 60 * _dt;
 		_newPos.x = _position.x + _speed;
 	}
 }
-void Bullet::collide()
+void Bullet::collide()//总的碰撞检测
 {
 	this->collideMap();			// 与地图的碰撞检测 
 	this->collideBullet();		// 与子弹的碰撞检测 
 	this->collideTank();		// 与坦克的碰撞检测 
 }
-void Bullet::collideMap()
+void Bullet::collideMap()//与地图的碰撞检测
 {
 	collideBorder();
 	collideObstacle();
 }
 
-void Bullet::collideObstacle()
+void Bullet::collideObstacle()//与障碍物的碰撞检测
 {
 	if (!_visible) return;
 	auto col = getColNumberFromPosition(_newPos.x);
@@ -550,7 +551,7 @@ void Bullet::collideObstacle()
 	//}
 }
 
-
+//边界的碰撞检测
 void Bullet::collideBorder()
 {
 	int(*map)[MAP_COL] = NULL;
@@ -591,11 +592,11 @@ void Bullet::collideBorder()
 		}
 	}
 }
-
+//与坦克的碰撞检测
 void Bullet::collideTank()
 {
-	Vector<Tank*> &tanks = GameScene::getTankM()->getAllTanks();
-	PlayerTank* playerTank = GameScene::getTankM()->getPlayerTank();
+	Vector<Tank*> &tanks = GameScene::getTankM()->getAllTanks();//获取所有坦克
+	PlayerTank* playerTank = GameScene::getTankM()->getPlayerTank();//获取玩家坦克
 	for (auto tank : tanks)
 	{
 		/* 判断是否是玩家坦克子弹打到敌人坦克或敌人坦克子弹打到玩家坦克的情况 */
@@ -623,7 +624,7 @@ void Bullet::collideTank()
 		}
 	}
 }
-
+//与子弹类的碰撞检测
 void Bullet::collideBullet()
 {
 	auto &bullets = GameScene::getBulletM()->getChildren();
@@ -688,7 +689,7 @@ void Bullet::checkAOE()
 	int(*map)[MAP_COL] = NULL;
 	stage->getMap(map);
 	//此处可以利用diriction的枚举值只写上下和左右两种情况，但是为了更加直观，改用4种情况判定
-	if (UP == _direction)
+	if (row + 1 < MAP_ROW && UP == _direction)
 	{
 		//和障碍物的检测
 		if (1 == _power)
@@ -815,7 +816,7 @@ void Bullet::checkAOE()
 		GameScene::getStage()->updateMapCell(row + 1, col - 1);
 	}
 
-	if (DOWN == _direction)
+	if (row - 1 >= 0 && DOWN == _direction)
 	{
 		//和障碍物的检测
 		if (1 == _power)
@@ -940,7 +941,7 @@ void Bullet::checkAOE()
 		}
 	}
 
-	if (LEFT == _direction)
+	if (col - 1 >= 0 && LEFT == _direction)
 	{
 		//和障碍物的检测
 		if (1 == _power)
@@ -1063,7 +1064,7 @@ void Bullet::checkAOE()
 		}
 	}
 
-	if (RIGHT == _direction)
+	if (col + 1 < MAP_COL && RIGHT == _direction)
 	{
 		//和障碍物的检测
 		if (1 == _power)

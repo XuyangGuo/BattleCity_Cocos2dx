@@ -7,7 +7,9 @@ using namespace CocosDenshion;
 //加音效,方便复制，故而注释在此
 //SimpleAudioEngine::getInstance()->playBackgroundMusic("menu_levelScene.mp3", true);
 
+/*这是玩家坦克的类，主要的功能就是继承坦克类，同时又对坦克放大招进行实现，还有坦克属性加成的函数*/
 
+//坦克的碰撞检测
 bool PlayerTank::collidePos(Vec2 pos) {
 	auto overlap = false;
 	auto &tanks = GameScene::getTankM()->getAllTanks();
@@ -42,7 +44,7 @@ bool PlayerTank::collidePos(Vec2 pos) {
 	}
 	return overlap;
 }
-
+//加速
 void PlayerTank::speUp() {
 
 	//加音效
@@ -462,13 +464,15 @@ void PlayerTank::hit(int atk) //tank->hit()
 	if (isShield) return;
 	//if (rand() % 10 < AvoidProbability * 10 {  此处为旭阳改
 	if (rand() % 100 < AvoidProbability * 100) {
-		this->setOpacity(50);
+		Sprite *tankImage = static_cast<Sprite *>(this->getChildByName("tankSkin"));
+		tankImage->setOpacity(50);
 		isAvoid = true;
 		this->unschedule("avoid");
 		this->scheduleOnce([&](float dt) {
 			isAvoid = false;
-			this->setOpacity(255);
-		}, 2.0f, "avoid");
+			Sprite *tankImage = static_cast<Sprite *>(this->getChildByName("tankSkin"));
+			tankImage->setOpacity(255);
+		}, 1.0f, "avoid");
 		return;
 	}
 	//{
@@ -557,13 +561,13 @@ void PlayerTank::shieldOn() {
 		shieldImage->removeFromParentAndCleanup(true);
 	}, shieldTime, "shield");
 }
-
+//加血
 void PlayerTank::addHP() {
 	this->HP += 50;
 	if (HP > TankData::getInstance()->getHP())	HP = TankData::getInstance()->getHP();
 	return;
 }
-
+//加力量
 void PlayerTank::powerUp() {
 	this->bulletPower = 1 ;
 }
@@ -581,7 +585,7 @@ void PlayerTank::statusUp() {
 	auto atk = GameScene::getTankM()->getPlayerTank()->getATK();
 	auto spe = GameScene::getTankM()->getPlayerTank()->getSPE();
 	GameScene::getTankM()->getPlayerTank()->setATK(atk + 2);
-	GameScene::getTankM()->getPlayerTank()->setSPE(spe + 2);
+	GameScene::getTankM()->getPlayerTank()->setSPE(spe + 0.8);
 }
 
 void PlayerTank::dieCountAll() {

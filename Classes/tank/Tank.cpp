@@ -3,6 +3,8 @@
 #include "scene\GameScene.h"
 #include "stage\Stage.h"
 
+/*这个类是坦克类，是玩家坦克和敌方坦克的父类，主要的函数有坦克移动函数、设计函数
+还有与地图、坦克的碰撞检测*/
 Tank::Tank() {
 
 }
@@ -14,42 +16,42 @@ Tank::~Tank() {
 bool Tank::init() {
 	return true;
 }
-
+//设置坦克坐标
 void Tank::setPos(Vec2 pos, Direction direction) {
 	_direction = direction;
 	this->setPosition(pos);
 	_newPos = pos;
 
 }
-
+//向上移动
 void Tank::moveUp()
 {
 	//_newPos.y = _position.y + _speed * 60 * _dt;
 	_newPos.y = _position.y + SPE;
 	//this->addStep();
 }
-
+//向下移动
 void Tank::moveDown()
 {
 	//_newPos.y = _position.y - _speed * 60 * _dt;
 	_newPos.y = _position.y - SPE;
 	//this->addStep();
 }
-
+//向左移动
 void Tank::moveLeft()
 {
 	//_newPos.x = _position.x - _speed * 60 * _dt;
 	_newPos.x = _position.x - SPE;
 	//this->addStep();
 }
-
+//向右移动
 void Tank::moveRight()
 {
 	//_newPos.x = _position.x + _speed * 60 * _dt;
 	_newPos.x = _position.x + SPE;
 	//this->addStep();
 }
-
+//向左转弯
 void Tank::turnLeft()
 {
 	if (_direction == UP || _direction == DOWN)
@@ -66,7 +68,7 @@ void Tank::turnLeft()
 	}
 	if (isAvoid == true)	this->setOpacity(50);
 }
-
+//向右转弯
 void Tank::turnRight()
 {
 	if (_direction == UP || _direction == DOWN)
@@ -83,7 +85,7 @@ void Tank::turnRight()
 	}
 	if (isAvoid == true)	this->setOpacity(50);
 }
-
+//向上转弯
 void Tank::turnUp()
 {
 	if (_direction == RIGHT || _direction == LEFT)
@@ -100,7 +102,7 @@ void Tank::turnUp()
 	}
 	if (isAvoid == true)	this->setOpacity(50);
 }
-
+//向下转弯
 void Tank::turnDown()
 {
 	if (_direction == RIGHT || _direction == LEFT)
@@ -117,7 +119,7 @@ void Tank::turnDown()
 	}
 	if (isAvoid == true)	this->setOpacity(50);
 }
-
+//进行列的校准
 void Tank::adjustPosX()//列校准
 {
 	float n = (_position.x- MAP_ORIGIN.x) / CELL_WIDTH;
@@ -132,7 +134,7 @@ void Tank::adjustPosX()//列校准
 	}
 	this->setPositionX(_newPos.x);
 }
-
+//进行行的校准
 void Tank::adjustPosY()//行校准
 {
 	float n = (_position.y - MAP_ORIGIN.y) / CELL_HEIGHT;
@@ -146,7 +148,7 @@ void Tank::adjustPosY()//行校准
 	}
 	this->setPositionY(_newPos.y);
 }
-
+//与地图的碰撞检测
 bool Tank::collideMap()
 {
 	int row, col;
@@ -194,7 +196,7 @@ bool Tank::collideMap()
 	}
 	return collide;
 }
-
+//与坦克的碰撞检测
 bool Tank::collideTank()
 {
 	auto collide = false;
@@ -234,7 +236,7 @@ bool Tank::collideTank()
 	}
 	return collide;
 }
-
+//重叠的情况
 bool Tank::overlapCheck()
 {
 	auto overlap = false;
@@ -270,6 +272,7 @@ bool Tank::overlapCheck()
 	}
 	return overlap;
 }
+//射击
 bool Tank::shoot()
 {
 	auto isShoot = false;

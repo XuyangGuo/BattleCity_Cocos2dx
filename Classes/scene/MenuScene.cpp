@@ -1,3 +1,10 @@
+/***********************************************
+
+该类是游戏主菜单的页面，
+主要功能包括各个功能页面的跳转、音效的管理
+
+***********************************************/
+
 #include "MenuScene.h"
 #include "data\Global.h"
 #include "SceneM.h"
@@ -25,6 +32,7 @@ void MenuScene::onEnterTransitionDidFinish()
 
 }
 
+//对键盘按键所做出的反应
 bool MenuScene::init()
 {
 	background = Sprite::create("HomePage0.jpg");

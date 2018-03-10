@@ -2,6 +2,8 @@
 #include "data\Global.h"
 #include "Scene\GameScene.h"
 #include "media\AudioM.h"
+/* 该类为奖励道具类，主要的功能是创建道具类，检测与道具碰撞的是否是玩家坦克，
+并根据不同的道具类型，对该坦克做出属性上的改变*/
 
 Bonus::Bonus()
 {
@@ -10,7 +12,7 @@ Bonus::Bonus()
 Bonus::~Bonus()
 {
 }
-
+//创建道具
 Bonus* Bonus::create(BonusType type,Vec2 pos)
 {
 	Bonus *pRet = new Bonus();
@@ -26,7 +28,7 @@ Bonus* Bonus::create(BonusType type,Vec2 pos)
 		return NULL;
 	}
 }
-
+//init函数，得到坦克坐标，添加到场景
 bool Bonus::init(BonusType type, Vec2 pos)
 {
 	bool bRet = false;
@@ -49,7 +51,7 @@ bool Bonus::init(BonusType type, Vec2 pos)
 	} while (false);
 	return bRet;
 }
-
+//先判断是否是玩家坦克，并根据不同的类型做出属性上的改变
 void Bonus::update(float dt)
 {
 	if (isCollidePlayer())
@@ -75,7 +77,7 @@ void Bonus::update(float dt)
 	}
 
 }
-
+//判断是否与玩家坦克判断
 bool Bonus::isCollidePlayer()
 {
 	auto player = GameScene::getTankM()->getPlayerTank();

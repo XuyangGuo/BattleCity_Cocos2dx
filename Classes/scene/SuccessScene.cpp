@@ -1,3 +1,10 @@
+/***********************************************
+
+该类管维护成就页面的生命周期，主要包括成就页面的前端信息，
+从SuccessData中获得当前成就的进度数据
+
+***********************************************/
+
 #include"SuccessScene.h"
 #include<iostream>
 #include "SceneM.h"
@@ -109,7 +116,7 @@ bool SuccessScene::init() {
 	tank1->setAnchorPoint(Vec2::ZERO);
 	tank1->setPosition(Vec2(91, 339.5f));
 	this->addChild(tank1,2);
-	Label* label3 = Label::create(String::createWithFormat("%d/100", hittanknum)->getCString(), "Simple.ttf", 26);
+	Label* label3 = Label::create(String::createWithFormat("%d/300", hittanknum)->getCString(), "Simple.ttf", 26);
 	label3->setAnchorPoint(Vec2::ZERO);
 	label3->setPosition(Vec2(395, 346.5));
 	this->addChild(label3,5);

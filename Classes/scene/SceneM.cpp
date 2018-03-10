@@ -1,3 +1,11 @@
+/***********************************************
+
+该类是游戏所有场景的管理类，
+游戏场景的跳转通过该类下面的changeScene函数实现，
+主要功能包括页面跳转、转换动画的制作
+
+***********************************************/
+
 #include "SceneM.h"
 #include "MenuScene.h"
 #include "LoadingScene.h"
@@ -28,7 +36,7 @@ bool SceneM::init()
 {
 	return true;
 }
-
+//转换场景，方便以后调用
 void SceneM::changeScene(SceneType sceneType, TransitionType transitionType)
 {
 	Scene *scene = Scene::create();
@@ -41,10 +49,10 @@ void SceneM::changeScene(SceneType sceneType, TransitionType transitionType)
 		_layer = MenuScene::create();
 		break;
 	case kLevelScene:
-		_layer = LevelScene::create();  //宗钰接
+		_layer = LevelScene::create();  
 		break;
 	case kSelectHeroScene:
-		_layer = SelectHeroScene::create();//选择英雄
+		_layer = SelectHeroScene::create();
 		break;
 	case kHeroScene:
 		_layer = HeroScene::create();

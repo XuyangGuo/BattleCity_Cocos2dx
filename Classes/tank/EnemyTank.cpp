@@ -1,6 +1,6 @@
 #include "EnemyTank.h"
 #include "scene\GameScene.h"
-
+/*这个类是敌方坦克类，主要的函数有设置敌方坦克的属性，还有坦克的血条和最大数目，继承坦克类*/
 EnemyTank::EnemyTank() {
 
 }
@@ -8,7 +8,7 @@ EnemyTank::EnemyTank() {
 EnemyTank::~EnemyTank(){
 
 }
-
+//创建坦克
 EnemyTank* EnemyTank::create(int type, Vec2 pos)
 {
 	EnemyTank *pRet = new EnemyTank();
@@ -24,7 +24,7 @@ EnemyTank* EnemyTank::create(int type, Vec2 pos)
 		return NULL;
 	}
 }
-
+//根据坦克类型来设置坦克属性
 bool EnemyTank::init(int type, Vec2 pos)
 {
 	bool bRet = false;
@@ -201,7 +201,7 @@ void EnemyTank::update(float dt)
 		GameScene::getTankM()->removeTank(this);
 	}
 }
-
+//坦克的攻击函数
 void EnemyTank::hit(int atk) {
 	//if (_bonus)
 	//{

@@ -1,3 +1,11 @@
+/***********************************************
+
+该类是游戏所有场景的管理类，
+游戏场景的跳转通过该类下面的changeScene函数实现，
+主要功能包括页面跳转、转换动画的制作
+
+***********************************************/
+
 #pragma once
 #include "cocos2d.h"
 USING_NS_CC;
@@ -17,6 +25,7 @@ enum SceneType			// 场景类型
 	kEditorScene,		// 自定义页面2
 };
 
+//切换场景的动画类型
 enum TransitionType
 {
 	kTransitionNone,

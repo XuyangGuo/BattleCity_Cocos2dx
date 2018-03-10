@@ -1,9 +1,13 @@
-#include "TankM.h"
+ #include "TankM.h"
 #include "scene\GameScene.h"
 #include "data\SuccessData.h"
 
 #include "SimpleAudioEngine.h"
 using namespace CocosDenshion;
+/*****************************************
+这个类是坦克管理类，主要的功能就是提供创建坦克的接口，并有暂停游戏和移除坦克的函数
+*****************************************/
+
 //加音效,方便复制，故而注释在此
 //SimpleAudioEngine::getInstance()->playBackgroundMusic("menu_levelScene.mp3", true);
 
@@ -12,11 +16,11 @@ TankM::TankM() {
 	/* 监听开场音效结束事件，开场音效结束后才开始播放敌人坦克行走音效 */
 	//NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR(TankM::startAudioEnd), "start_audio_end", nullptr);
 }
-
+ 
 TankM::~TankM(){
 	//NotificationCenter::getInstance()->removeAllObservers(this);
 }
-
+//创建坦克
 bool TankM::init()
 {
 	bool bRet = false;
@@ -32,13 +36,13 @@ bool TankM::init()
 	} while (false);
 	return bRet;
 }
-
+//定时器来创建坦克
 void TankM::timer(float dt)
 {
 	this->createNewEnemy();
 	//GameScene::getStage()->updateEnemyNum();
 }
-
+//创建玩家坦克
 void TankM::createNewPlayer()
 {
 	_playerTank = PlayerTank::create(DataM::getInstance()->getHType());
@@ -46,7 +50,7 @@ void TankM::createNewPlayer()
 	_tanks.pushBack(_playerTank);
 }
 
-
+//创建敌方坦克，坦克的最大数目为6
 void TankM::createNewEnemy()
 {
 		_pos++;
@@ -73,7 +77,7 @@ void TankM::createNewEnemy()
 
 
 }
-
+//设置暂停游戏的接口
 void TankM::pauseGame()
 {
 	_scheduler->pauseTarget(this);
@@ -93,7 +97,7 @@ void TankM::pauseGame()
 		tank->pause();
 	}
 }
-
+//设置重新游戏的接口
 void TankM::resumeGame()
 {
 	_scheduler->resumeTarget(this);
@@ -113,7 +117,7 @@ void TankM::resumeGame()
 		_scheduler->resumeTarget(tank);
 	}
 }
-
+//当坦克死亡时，创建爆炸，并移除坦克
 void TankM::removeTank(Tank* tank)
 {
 	//加音效
@@ -154,7 +158,7 @@ void TankM::removeTank(Tank* tank)
 	}
 	if (_playerTank==nullptr) NotificationCenter::getInstance()->postNotification("game_fail");
 }
-
+//打死所有的敌方坦克
 void TankM::killAllEnemy()
 {
 	for (auto i = _enemyTanks.size() - 1; i >= 0; i--)
@@ -163,7 +167,7 @@ void TankM::killAllEnemy()
 		removeTank(enemy);
 	}
 }
-
+//当坦克吃到道具的时候，移除道具
 void TankM::removeBonus() {
 	bonus->removeFromParent();
 	bonus = nullptr;

@@ -1,3 +1,11 @@
+/***********************************************
+
+这是一个成就数据的管理系统，主要功能包括：
+外部成就Json的读写，当前游戏即时成就的更新（
+这主要通过update……接口来完成），以及成就完成的判定
+
+***********************************************/
+
 #include "SuccessData.h"
 #include "DataM.h"
 #include "data\StayTime.h"
@@ -55,7 +63,7 @@ bool SuccessData::init()
 	return true;
 }
 
-//给旭阳的函数
+//更新数据
 void SuccessData::updateBrickNum()
 {
 	brickNum++;
@@ -140,7 +148,7 @@ std::vector<char *> SuccessData::updateAlldata()
 	//准备返回当前完成的成就
 	updateFinishedSuccess();
 
-	//进度
+	//写入进度的json文件
 	Document progress;
 	progress.SetObject();
 	rapidjson::Document::AllocatorType &allocator1 = progress.GetAllocator();
@@ -194,7 +202,7 @@ std::vector<char *> SuccessData::updateAlldata()
 		fclose(file2);
 	}
 
-	//返回一个Vector，用来显示完成了啥啥啥
+	//返回一个Vector，用来显示完成了什么，另外四个写在上面的各自的update中
 	std::vector<char *> tempCurrentFinished(currentFinished);
 	currentFinished.clear();
 
@@ -245,7 +253,7 @@ void SuccessData::updateFinishedSuccess()
 		char *temp = (FontToUTF8("洪荒之力 达成!"));
 		currentFinished.push_back(temp);
 	}
-//另外四个写在上面的各自的update中
+
 }
 
 //判断是否获得皮肤
@@ -295,7 +303,7 @@ int SuccessData::updateSkin()
 	return skinNum;
 }
 
-//获得success数据-给拐子
+//获得success数据，传到成就场景类
 
 //打通所有关卡进度
 int SuccessData::getAllLevelProgress()

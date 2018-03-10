@@ -1,4 +1,5 @@
 #pragma once
+/*这个类是敌方坦克类，主要的函数有设置敌方坦克的属性，还有坦克的血条和最大数目，继承坦克类*/
 #include "Tank.h"
 #include "ui\CocosGUI.h"
 using namespace ui;
@@ -25,10 +26,10 @@ private:
 
 	//bool _bonus;		// 是否有道具奖励 
 	//int _bonusStep;	    // 带奖励的坦克的帧数 
-	int _type;
+	int _type;//类型
 	float dieScale = 1;
 	bool dieCountOn = false;
-	bool isFireUp = false;
+	bool isFireUp = false;//是否灼烧
 	int count = 359;  //灼烧计数
 	Sprite *diecount = nullptr;
 	//最大生命值，用来计算进度条

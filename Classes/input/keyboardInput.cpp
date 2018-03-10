@@ -1,3 +1,10 @@
+/***********************************************
+
+这是一个实现了（不限于）26键的全键盘监听，
+按键状态储存在Global中
+
+***********************************************/
+
 #include "keyboardInput.h"
 #include "data\Global.h"
 
@@ -45,7 +52,7 @@ bool KeyboardInput::init()
 
 	return true;
 }
-
+//设置键盘状态
 void KeyboardInput::setKeyState(EventKeyboard::KeyCode keyCode, bool state)
 {
 	switch(keyCode)

@@ -3,7 +3,8 @@
 #include "data/Global.h"
 #include "media\AudioM.h"
 #include "media\BombM.h"
-
+/*该类为子弹类，主要的函数有创建子弹的函数，还有子弹移动过程中的碰撞检测，
+有与地图边界、地图障碍物、子弹、坦克这四种判断检测*/
 USING_NS_CC;
 
 class Bullet : public Sprite

@@ -1,3 +1,10 @@
+/***********************************************
+
+该类用来制作自定义地图选项页。
+包括自定义地图选项页面按钮布局、按键跳转、动画和音效管理
+
+***********************************************/
+
 #include"EditScene.h"
 #include"input\keyboardInput.h"
 #include"data\Global.h"
@@ -182,11 +189,18 @@ void EditScene::update(float dt) {
 		}
 
 		if (EnterSelectedMap == false && option1 == 4) {
-			_arrow->getSprite()->setTexture("shadowSelector.png");
-			_arrow->setPosition(Vec2(762, 724));
-			_arrow->setContentSize(Size(400, 54));
-			EnterSelectedMap = true;
-			return;
+			if (mapNumMax == 0)
+			{
+
+			}
+			else
+			{
+				_arrow->getSprite()->setTexture("shadowSelector.png");
+				_arrow->setPosition(Vec2(762, 724));
+				_arrow->setContentSize(Size(400, 54));
+				EnterSelectedMap = true;
+				return;
+			}
 		}
 
 		if (option1 == 3 && EnterSelectedDifficulty == true) {

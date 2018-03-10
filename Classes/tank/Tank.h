@@ -1,5 +1,6 @@
 #pragma once
-
+/*这个类是坦克类，是玩家坦克和敌方坦克的父类，主要的函数有坦克移动函数、设计函数
+还有与地图、坦克的碰撞检测*/
 #include "cocos2d.h"
 #include "data\Global.h"
 #include "data\DataM.h"
@@ -21,11 +22,16 @@ public:
 	//int getType() { return _type; }
 	/* 被子弹打到 */
 	virtual void hit(int atk)=0;
+	/*得到坦克的HP*/
 	int getHP() { return HP; }
 	float getSPE() { return SPE; }
+	//得到坦克的攻击力
 	int getATK() { return ATK; }
+	//得到坦克的子弹数目
 	int getBulletNum() { return bulletNumMAX; }
+	//得到坦克的速度
 	void setSPE(float spe) { SPE = spe;}
+	//设置坦克的攻击力
 	void setATK(int atk) { ATK = atk; }
 
 
@@ -70,12 +76,12 @@ protected:
 	Direction _direction;	// 方向 
 	float _dt;
 
-	int HP;
-	float SPE;
-	int ATK;
-	int bulletNumMAX;
-	float bulletSPE;
-	float bulletDistance;
+	int HP;//设置HP
+	float SPE;//设置速度
+	int ATK;//设置攻击力
+	int bulletNumMAX;//设置子弹最大数目
+	float bulletSPE;//设置子弹速度
+	float bulletDistance;//设置子弹射程
 	int bulletPower = 0;		// 子弹的威力(0不可打破铁，1可打破铁) 
-	bool isAvoid = false;
+	bool isAvoid = false;//设置是否闪避
 };

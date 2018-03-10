@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{a68a8053-c607-48b5-b799-9dc1d511a1d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\data">
+      <UniqueIdentifier>{aa2bfefd-632a-4e26-9109-52bbea6de82c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tank">
+      <UniqueIdentifier>{e260f6ae-198b-46a4-b990-8320195f3f75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\media">
+      <UniqueIdentifier>{eec65b8c-f3eb-472b-82b8-0e0acd706963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\input">
+      <UniqueIdentifier>{4afd06b8-9e8f-4997-8b5d-b6be13537c77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\stage">
+      <UniqueIdentifier>{3ca091da-710c-4db6-b6c1-7465a70891d5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\ChineseFonts.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\DataM.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\ExternData.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\Global.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\SkillDetail.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\StayTime.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\SuccessData.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data\TankData.cpp">
+      <Filter>src\data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\EditorScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\EditScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\GameScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\HeroScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\LevelScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\LoadingScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\MenuScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\SceneM.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\SelectHeroScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\SkillScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\SuccessScene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\Bonus.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\Bullet.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\BulletM.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\EnemyTank.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\PlayerTank.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\Tank.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\tank\TankM.cpp">
+      <Filter>src\tank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\media\AudioM.cpp">
+      <Filter>src\media</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\media\Bomb.cpp">
+      <Filter>src\media</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\media\BombM.cpp">
+      <Filter>src\media</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\input\keyboardInput.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\FailLayer.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\PauseLayer.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\Stage.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\stage\WinLayer.cpp">
+      <Filter>src\stage</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\ChineseFonts.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\DataM.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\ExternData.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\Global.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\SkillDetail.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\StayTime.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\SuccessData.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data\TankData.h">
+      <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\EditorScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\EditScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\GameScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\HeroScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\LevelScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\LoadingScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\MenuScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\SceneM.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\SelectHeroScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\SkillScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\SuccessScene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\Bonus.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\Bullet.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\BulletM.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\EnemyTank.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\PlayerTank.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\Tank.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\tank\TankM.h">
+      <Filter>src\tank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\media\AudioM.h">
+      <Filter>src\media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\media\Bomb.h">
+      <Filter>src\media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\media\BombM.h">
+      <Filter>src\media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\input\keyboardInput.h">
+      <Filter>src\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\FailLayer.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\PauseLayer.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\Stage.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\stage\WinLayer.h">
+      <Filter>src\stage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

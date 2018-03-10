@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Bullet.h"
-
+/*该类为子弹管理类，主要的函数是提供一个创建子弹的接口，并统计子弹的数目*/
 class Bullet;
 
 USING_NS_CC;

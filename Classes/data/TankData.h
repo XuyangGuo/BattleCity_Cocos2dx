@@ -1,3 +1,10 @@
+/***********************************************
+
+这里管理了游戏运行中坦克的基本数据，包括坦克的速、HP、攻击力等等，
+此外，还通过SP矩阵计算当前坦克的属性
+
+***********************************************/
+
 #pragma once
 #include "cocos2d.h"
 #include "DataM.h"
@@ -9,9 +16,9 @@ class TankData :public Ref
 public:
 	TankData();
 	static TankData *getInstance();
-	int getHP();
+	int getHP();//得到HP
 	float getSPE();							//绝对坐标/秒
-	int	getATK();
+	int	getATK();							//攻击力
 	int getBulletNumMAX();
 	float getBulletSPE();					//绝对坐标/秒
 	float getBulletDistance();				//绝对坐标
