@@ -8,7 +8,7 @@
 
 ## 3. Interface
 
-![](Readme Ref\im10.jpg)
+![](https://github.com/XuyangGuo/BattleCity/blob/master/Readme%20Ref/im10.png)
 
 ![](Readme Ref\im11.png)
 
