@@ -1,8 +1,8 @@
 # Battle City
-## 1. Game platform
+## 1. Game Platform
 - Windows 10
 
-## 2. Development framework
+## 2. Development Framework
 - Cocos2d-x 3.10
 - Visual Studio 2015
 
